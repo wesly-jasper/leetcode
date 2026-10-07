@@ -1,14 +1,11 @@
 class Solution:
     def subsets(self, nums: list[int]) -> list[list[int]]:
-        t=[]
-        ans=[]
+        res,p=[],[]
         def b(i):
-            if i==len(nums):
-                ans.append(t[:])
-                return
-            t.append(nums[i])
-            b(i+1)
-            t.pop()
-            b(i+1)
-            return ans
+            res.append(p[:])
+            for i in range(i,len(nums)):
+                p.append(nums[i])
+                b(i+1)
+                p.pop()
+            return res
         return b(0)
