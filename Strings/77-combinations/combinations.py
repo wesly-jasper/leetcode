@@ -1,13 +1,13 @@
 class Solution:
     def combine(self, n: int, k: int) -> list[list[int]]:
-        res=[]
-        def b(s,p):
+        res,p=[],[]
+        def b(i):
             if len(p)==k:
                 res.append(p[:])
                 return
-            for i in range(s,n+1):
+            for i in range(i,n+1):
                 p.append(i)
-                b(i+1,p)
+                b(i+1)
                 p.pop()
-        b(1,[])
-        return res
+            return res
+        return b(1)
